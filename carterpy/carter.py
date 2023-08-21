@@ -1,8 +1,7 @@
 import requests
 import json
 import time
-from .classes import Interaction
-from .utils import convert_to_string, URLS
+from .utils import convert_to_string, URLS, tokenize, request_template
 
 
 def carterRequest(url, data, headers):
@@ -15,74 +14,21 @@ def carterRequest(url, data, headers):
         return None
 
 
-class Carter:
-    def __init__(self, api_key, speak=False):
+class Eureka:
+    def __init__(self, api_key, uiname):
         self.api_key = api_key
         self.history = []
         self.speak_default = speak
+        self.uiname = uiname
 
-    def say(self, text, user_id, speak=None):
-        text = convert_to_string("text", text)
-        user_id = convert_to_string("user_id", user_id)
-        start = time.perf_counter()
-        speak_now = speak if speak is not None else self.speak_default
-        data = {
-            "text": text,
-            "user_id": user_id,
-            "key": self.api_key,
-            "speak": speak_now
-        }
+    def say(self, text, user_id):
+        user_id = str(user_id)
+        text = str(text)
 
-        headersList = {
-            "Accept": "*/*",
-            "Content-Type": "application/json"
-        }
-
-        response_data = carterRequest(URLS["say"], data, headers=headersList)
-        time_taken = int((time.perf_counter() - start) * 1000)
-        interaction = Interaction("say", data, response_data, time_taken)
-        if interaction.ok:
-            self.history.insert(0, interaction)
-        return interaction
-
-    def opener(self, user_id, speak=None):
-        user_id = convert_to_string("user_id", user_id)
-        start = time.perf_counter()
-        speak_now = speak if speak is not None else self.speak_default
-        data = {
-            "user_id": user_id,
-            "key": self.api_key,
-            "speak": speak_now,
-            "personal": True
-        }
-        headersList = {
-            "Accept": "*/*",
-            "Content-Type": "application/json"
-        }
-        response = carterRequest(
-            URLS["opener"], headers=headersList, data=data)
-        time_taken = int((time.perf_counter() - start) * 1000)
-        interaction = Interaction("opener", data, response, time_taken)
-        if interaction.ok:
-            self.history.insert(0, interaction)
-        return interaction
-
-    def personalise(self, text, user_id, speak=None):
-        text = convert_to_string("text", text)
-        start = time.perf_counter()
-        speak_now = speak if speak is not None else self.speak_default
-        data = {
-            "text": text,
-            "key": self.api_key,
-            "speak": speak_now,
-            "user_id": user_id
-        }
-        headersList = {
-            "Accept": "*/*",
-            "Content-Type": "application/json"
-        }
-        response = carterRequest(
-            URLS["personalise"], headers=headersList, data=data)
-        time_taken = int((time.perf_counter() - start) * 1000)
-        interaction = Interaction("personalise", data, response, time_taken)
-        return interaction
+        BASE_URL = ""
+        headers, data = request_template(self.api_key, text, user_id, self.uiname)
+        response = requests.post(f"{BASE_URL}/chat", json=data, headers=headers)
+        if response.status_code == 200:
+            return response.text
+        else:
+            return {"error": "Error occurred during chat request"}

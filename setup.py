@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="carter-py",
-    version="1.0.2",
+    name="Eureka-py",
+    version="0.0.1",
     packages=find_packages(),
     install_requires = [
     "aiohttp==3.8.4",
@@ -11,22 +11,18 @@ setup(
     "python-dotenv==1.0.0",
     "Requests==2.28.2",
     "responses==0.23.1",
-    "setuptools==65.5.0"
+    "setuptools==65.5.0",
+    "Janex"
     ],
-    author="LazyLyrics",
-    author_email="lazylyrics@icloud.com",
-    description="A wrapper for the Carter API",
+    author="LazyLyrics, Cipher58, Ethan-Barr",
+    author_email="cipher58public@gmail.com",
+    description="A wrapper for the Eureka API",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/LazyLyrics/carter-py",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
+        "License :: OSI Approved :: MIT License"
     ],
 )
