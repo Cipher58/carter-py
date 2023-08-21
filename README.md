@@ -38,3 +38,5 @@ response = eureka.say("Hello, world!", "player123")
 print(response)
 
 ```
+
+In reference to the original work done by LazyLyrics, the license agreement remains constant under the MIT License.
