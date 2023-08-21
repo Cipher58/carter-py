@@ -2,7 +2,8 @@
 
 Original Package:
 
-```[GitHub](https://github.com/LazyLyrics/carter-py) | [PyPI](https://pypi.org/project/carter-py/) | [Change Log](https://github.com/LazyLyrics/carter-py/blob/main/CHANGELOG.md)| [Docs](https://lazylyrics.gitbook.io/carter-py-v1/)
+```
+[GitHub](https://github.com/LazyLyrics/carter-py) | [PyPI](https://pypi.org/project/carter-py/) | [Change Log](https://github.com/LazyLyrics/carter-py/blob/main/CHANGELOG.md)| [Docs](https://lazylyrics.gitbook.io/carter-py-v1/)
 ```
 
 `carter-py` is a Python package that provides a simple wrapper for the Eureka API. It is based on LazyLyrics' `carter-py` wrapper library, with high elements of their original code included. Citing `https://github.com/LazyLyrics/carter-py/tree/main` - Big thanks to them for their work!
