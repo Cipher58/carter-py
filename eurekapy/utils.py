@@ -1,13 +1,12 @@
 import datetime
-from Janex import *
 
 URLS = {
-    "say": "https://api.carterlabs.ai/api/chat"
+    "say": "https://api.eureka-ai.dev/chat"
 }
 
 def convert_to_string(variable_name, value):
     try:
-        return str(value)
+        return str(value)  
     except:
         raise TypeError(f"{variable_name} must be convertible to a string, received {type(value)}")
 

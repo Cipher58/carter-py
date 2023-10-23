@@ -11,11 +11,10 @@ setup(
     "python-dotenv==1.0.0",
     "Requests==2.28.2",
     "responses==0.23.1",
-    "setuptools==65.5.0",
-    "Janex"
+    "setuptools==65.5.0"
     ],
     author="LazyLyrics, Cipher58, Ethan-Barr",
-    author_email="cipher58public@gmail.com",
+    author_email="hello.eurekaai@gmail.com",
     description="A wrapper for the Eureka API",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
